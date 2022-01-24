@@ -1,7 +1,7 @@
 import TaskListItem from '../task-list-item/task-list-item';
 import './task-list.css';
 
-const TaskList = ({ data, onDelete, onToggleChief, onToggleComplete }) => {
+const TaskList = ({ data, onDelete, onToggleProp }) => {
   //для перебора массива используем метод map т.к. он возвращает новый массив элементов
   const elements = data.map((item) => {
     const { id, ...itemProps } = item;
@@ -11,8 +11,8 @@ const TaskList = ({ data, onDelete, onToggleChief, onToggleComplete }) => {
       <TaskListItem
       key={id} {...itemProps}
       onDelete={() => onDelete(id)}
-      onToggleComplete={() => onToggleComplete(id)}
-      onToggleChief={() => onToggleChief(id)}
+      onToggleProp={(e) => onToggleProp(id, e.currentTarget.getAttribute('data-toggle'))}
+
 
       />
     );

@@ -3,7 +3,7 @@ import './task-list-item.css';
 
 const TaskListItem = (props) => {
 
-    const { task, onDelete, onToggleComplete, onToggleChief, complete, chief } = props;
+    const { task, onDelete, onToggleProp, complete, chief } = props;
 
     let classNames = 'list-group-item d-flex justify-content-between';
     if (complete) {
@@ -15,7 +15,7 @@ const TaskListItem = (props) => {
 
     return (
       <li className={classNames}>
-        <span className="list-group-item-label" onClick={onToggleChief}>
+        <span className="list-group-item-label" onClick={onToggleProp} data-toggle="chief">
           {task}
         </span>
         {/* <input
@@ -27,7 +27,8 @@ const TaskListItem = (props) => {
           <button
             type="button"
             className="btn-exclamation btn-sm"
-            onClick={onToggleComplete}
+            onClick={onToggleProp}
+            data-toggle="complete"
           >
             <i className="fa-solid fa-circle-exclamation"></i>
           </button>

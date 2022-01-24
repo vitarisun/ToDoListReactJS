@@ -43,28 +43,16 @@ class App extends Component {
     });
   };
 
-  onToggleComplete = (id) => {
+  onToggleProp = (id, prop) => {
     this.setState(({data}) => ({
       data: data.map(item => {
         if (item.id === id) {
-          return {...item, complete: !item.complete}
+          return {...item, [prop]: !item[prop]}
         }
         return item;
       })
     }))
   }
-
-  onToggleChief = (id) => {
-    this.setState(({data}) => ({
-      data: data.map(item => {
-        if (item.id === id) {
-          return {...item, chief: !item.chief}
-        }
-        return item;
-      })
-    }))
-  }
-
 
 
   render() {
@@ -77,8 +65,8 @@ class App extends Component {
         <div className="searсh-panel">
           <SearchPanel />
           <TaskList data={this.state.data} onDelete={this.deleteItem}
-          onToggleComplete={this.onToggleComplete}
-          onToggleChief={this.onToggleChief}
+          onToggleProp={this.onToggleProp}
+
           />
           <AppFilter />
         </div>
