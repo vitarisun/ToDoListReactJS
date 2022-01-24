@@ -55,7 +55,14 @@ class App extends Component {
   }
 
   onToggleChief = (id) => {
-    console.log(`Chief this ${id}`);
+    this.setState(({data}) => ({
+      data: data.map(item => {
+        if (item.id === id) {
+          return {...item, chief: !item.chief}
+        }
+        return item;
+      })
+    }))
   }
 
 
